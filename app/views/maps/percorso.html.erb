@@ -1,0 +1,40 @@
+
+
+ <!-- form action="#" onsubmit="setDirections(this.from.value, this.to.value, this.locale.value); return false">
+	<div>
+		<b>Partenza:</b> <input type="text" size="30" id="fromAddress" name="from" style="margin-left:10px;width:300px;" />
+		
+		<br />
+
+		<input type="text" size="30" id="toAddress" name="to" value="Jesolo" style="display:none;"/>
+		<select id="locale" name="locale" style="display:none;margin-left:20px;width:300px;">
+				    <option value="it">Italiano</option>
+					<option value="en">English</option>
+				    </select>
+					<br />
+		<input name="submit" type="submit" value="Calcola Percorso" style="margin-left:70px;" />
+
+	</div>
+ </form><br />
+
+<div id="directions"></div-->
+
+
+ <form action="#" onsubmit="setDirections(this.from.value, this.to.value, this.locale.value); return false">
+	<div style="border: 1px solid #DFDFDF;padding:10px;">
+		<b>Partenza:</b> <input type="text" size="30" id="fromAddress" name="from" style="margin-left:10px;width:300px;" />
+		
+		<br />
+
+		<b>Arrivo:</b> <input type="text" size="30" id="toAddress" name="to" style="margin-left:10px;width:300px;"/>
+		<select id="locale" name="locale" style="display:none;margin-left:20px;width:300px;">
+				    <option value="it" selected>Italiano</option>
+					
+				    </select>
+					<br />
+		<input name="submit" type="submit" value="Calcola Percorso" style="margin-left:70px;" />
+
+	</div>
+ </form><br />
+
+<div id="directions"></div>

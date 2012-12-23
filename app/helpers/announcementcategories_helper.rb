@@ -1,0 +1,2 @@
+module AnnouncementcategoriesHelper
+end

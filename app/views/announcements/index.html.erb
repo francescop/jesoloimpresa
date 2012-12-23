@@ -1,0 +1,69 @@
+<h1>Listing announcements</h1>
+
+<table>
+  <tr>
+    <th>Announcementcategory</th>
+    <th>Comune</th>
+    <th>Indirizzo</th>
+    <th>Titolo</th>
+    <th>Offrocerco</th>
+    <th>Descrizione</th>
+    <th>Email</th>
+    <th>Nome</th>
+    <th>Telefono</th>
+    <th>Sitoweb</th>
+    <th>Attivo</th>
+    <th>Permalink</th>
+    <th>Image1 file name</th>
+    <th>Image1 content type</th>
+    <th>Image1 file size</th>
+    <th>Image1 updated at</th>
+    <th>Image2 file name</th>
+    <th>Image2 content type</th>
+    <th>Image2 file size</th>
+    <th>Image2 updated at</th>
+    <th>Image3 file name</th>
+    <th>Image3 content type</th>
+    <th>Image3 file size</th>
+    <th>Image3 updated at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @announcements.each do |announcement| %>
+  <tr>
+    <td><%= announcement.announcementcategory_id %></td>
+    <td><%= announcement.comune %></td>
+    <td><%= announcement.indirizzo %></td>
+    <td><%= announcement.titolo %></td>
+    <td><%= announcement.offrocerco %></td>
+    <td><%= announcement.descrizione %></td>
+    <td><%= announcement.email %></td>
+    <td><%= announcement.nome %></td>
+    <td><%= announcement.telefono %></td>
+    <td><%= announcement.sitoweb %></td>
+    <td><%= announcement.attivo %></td>
+    <td><%= announcement.permalink %></td>
+    <td><%= announcement.image1_file_name %></td>
+    <td><%= announcement.image1_content_type %></td>
+    <td><%= announcement.image1_file_size %></td>
+    <td><%= announcement.image1_updated_at %></td>
+    <td><%= announcement.image2_file_name %></td>
+    <td><%= announcement.image2_content_type %></td>
+    <td><%= announcement.image2_file_size %></td>
+    <td><%= announcement.image2_updated_at %></td>
+    <td><%= announcement.image3_file_name %></td>
+    <td><%= announcement.image3_content_type %></td>
+    <td><%= announcement.image3_file_size %></td>
+    <td><%= announcement.image3_updated_at %></td>
+    <td><%= link_to 'Show', announcement %></td>
+    <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
+    <td><%= link_to 'Destroy', announcement, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Announcement', new_announcement_path %>

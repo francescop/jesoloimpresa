@@ -1,0 +1,129 @@
+<%= form_for(@activity, :html => { :multipart => true }) do |f| %>
+  <% if @activity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@activity.errors.count, "error") %> ha proibito il salvataggio:</h2>
+
+      <ul>
+      <% @activity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Nome' %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label 'Indirizzo' %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label 'Telefono' %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label 'Sito Web' %><br />
+    <%= f.text_field :website %>
+  </div>
+  <div class="field">
+    <%= f.label :metatag %><br />
+    <%= f.text_field :metatag %>
+  </div>
+  <div class="field">
+    <%= f.label 'Descrizione' %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label 'Descrizione Completa' %><br />
+    <%= f.text_area :complete_description %>
+  </div>
+  
+  <p styel="text-decoration:underline;">Dimensione Immagini: h90 w100; es: /images/capiotto.jpg </p>
+  
+  <div class="field">
+    <%= f.label 'Immagine 1' %><br />
+    <%= f.file_field :img1 %>
+	<br />
+	<%= f.label :altimage1 %><br />
+	<%= f.text_field :altimage1 %>
+  </div>
+  <br />
+  <br />
+  
+  <div class="field">
+    <%= f.label 'Immagine 2' %><br />
+    <%= f.file_field :img2 %>
+  <br />
+	<%= f.label :altimage2 %><br />
+	<%= f.text_field :altimage2 %>
+  </div>
+  <br />
+  <br />
+  
+  <div class="field">
+    <%= f.label 'Immagine 3' %><br />
+    <%= f.file_field :img3 %>
+  <br />
+	<%= f.label :altimage3 %><br />
+	<%= f.text_field :altimage3 %>
+  </div>
+  <br />
+  <br />
+  
+  <div class="field">
+    <%= f.label 'Immagine 4' %><br />
+    <%= f.file_field :img4 %>
+  <br />
+	<%= f.label :altimage4 %><br />
+	<%= f.text_field :altimage4 %>
+  </div>
+  <br />
+  <br />
+  
+  <div class="field">
+    <%= f.label 'Immagine 5' %><br />
+    <%= f.file_field :img5 %>
+  <br />
+	<%= f.label :altimage5 %><br />
+	<%= f.text_field :altimage5 %>
+  </div>
+  <br />
+  <br />
+  
+  <div class="field">
+    <%= f.label 'Immagine 6' %><br />
+    <%= f.file_field :img6 %>
+  <br />
+	<%= f.label :altimage6 %><br />
+	<%= f.text_field :altimage6 %>
+  </div>
+  <br />
+  <br />
+  
+  <div class="field">
+    <%= f.label 'Categoria' %><br />
+	<%= f.collection_select :category_id, Category.all, :id, :name, :prompt => true  %>
+  </div>
+  <div class="field">
+    <%= f.label 'Data Scadenza' %><br />
+    <%= f.date_select :expiredate, :order => [:day,:month,:year], :use_month_numbers => true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :peso %><br />
+    <%= f.text_field :peso %>
+  </div>
+  
+  <div class="field">
+    <%= f.label 'Home Banner' %><br />
+    <%= f.check_box :banner %>
+  </div>
+  
+  
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

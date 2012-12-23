@@ -1,0 +1,31 @@
+
+<table>
+  <tr>
+  	<th>Scadenza</th>
+    <th>Nome</th>
+	<th>Peso</th>
+	<th>Sito Web</th>
+	<th>Categoria</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @activities.each do |activity| %>
+  <tr>
+    <td><%= display_date(activity.expiredate) %></td>
+	<td><%= activity.name %></td>
+	<td><%= activity.peso %></td>
+	<% if activity.website? %><td>SI</td><%else%><td>NO</td><%end%>
+	<td><%= activity.category.type %></td>
+    <td><%= link_to 'Guarda', activity %> |</td>
+    <td><%= link_to 'Edita', edit_activity_path(activity) %> |</td>
+    <td><%= link_to 'Elimina', activity, :confirm => 'Sei sicuro?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuova Attività', new_activity_path %><br /> 
+

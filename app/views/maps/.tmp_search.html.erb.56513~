@@ -1,0 +1,21 @@
+<h1>Maps#index</h1>
+<p>Find me in app/views/maps/index.html.erb</p>
+
+<%= render 'search' %>
+
+<div id="search-results">
+	
+	<div id="search-content">
+	
+		<div id="results">
+			
+			<%= render(:partial => "activities" , :collection => @activities) %>
+			
+			
+			
+			
+		</div> <!-- /results -->
+		
+	</div> <!-- /search-content -->
+	
+</div> <!-- /search-results -->

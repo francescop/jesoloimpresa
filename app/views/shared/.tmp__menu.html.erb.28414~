@@ -1,0 +1,7 @@
+<ul>
+						<li><%= link_to 'Home', :controller => :sito, :action => :index %></li>
+						<li><%= link_to 'Categorie', :controller => :categories, :action => :index %></li>
+						<li>MAPPA DELLE AZIENDE</li>
+						<li>Iscrivi la tua azienda</li>
+						<li>PUBBLICITA'</li>
+					</ul>

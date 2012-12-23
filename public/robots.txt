@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /activities/
+Disallow: /categories/

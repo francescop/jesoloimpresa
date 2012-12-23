@@ -1,0 +1,161 @@
+<% if flash[:notice] %><p id="notice"><%= notice %></p><% end %>
+
+<div class="content_large activity_show">
+	
+	<div class="scritta_gialla">
+		<span>Dettagli Azienda</span>
+	</div>
+
+		<h1><%= @activity.name %></h1>
+		<h3><%= @activity.category.name %> a Jesolo </h3>
+		<% if admin? %> 
+			<%= link_to 'Edita Attività', edit_activity_path(@activity) %> | 
+			<%= link_to 'Elimina Attività', @activity, :confirm => 'Sei sicuro?', :controller => :activities, :method => :delete %><br />
+		<% end %>
+		
+		<div class="scritta_gialla top30">
+			<span>Contatti</span>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		<div class="clearfix paid-listing result track-listing track-restaurant vcard">
+	
+		
+		 <div class="activity_show_info"> 
+				
+
+			<h3 class="business-name fn org"><%= @activity.name %></h3>
+			
+			<span class="normal">CATEGORIA</span> <span class="normal left8" style="text-transform:capitalize;"> <%= link_to @activity.category.name, @activity.category%></span><br />
+			<span class="normal indirizzo">Indirizzo</span> <span class="normal left8"><%= @activity.address %></span><br />
+			<span class="normal telefono">Telefono</span>  <span class="normal left8"><%= @activity.phone %></span><br />
+			
+				<% if @activity.website? %>
+					<span class="normal sito_web">Sito Web</span> <span class="normal left8"><%= link_to @activity.website, "http://"+@activity.website, :target => "_blank" %></span><br />
+				<% end %>
+			<br />
+						
+		</div> <!-- /info -->
+		
+		
+		<div class="activity_show_info_img">
+		
+		<% if @activity.img1? %>
+				<%= image_tag(@activity.img1.url, :alt => @activity.altimage1, :title => @activity.name, :width => '125px', :height => '80px') %>
+			<% else %>
+				<img src="/images/imm_box.jpg" />
+			<% end %>
+			
+		</div> <!-- /info -->
+		
+	</div> <!-- /listing_content -->
+		
+		<div class="activity_page_description">
+			
+			<div id="brief_description">
+				
+				<div class="scritta_gialla">
+					<span>Descrizione</span>
+				</div>
+
+				<% if @activity.description? %>
+					<p>
+						<%= @activity.description %>
+					</p>
+					
+				<% else %>
+				
+					<p>
+						Descrizione non disponibile.
+					</p>
+		
+				<% end %>
+					
+			</div> <!-- /brief_description -->
+					
+			<div id="complete_description">
+				
+				<% if @activity.description? %>
+				
+					<div class="scritta_gialla">
+						<span>Descrizione Completa</span>
+					</div>
+
+					
+					<p>
+						<%= @activity.complete_description %>
+					</p>
+				<% end %>
+						
+			</div> <!-- /complete_description -->
+						
+				
+					
+				
+				
+				
+			
+			
+		
+		</div> <!-- /activity_page_description -->
+		
+
+	
+	
+	
+	
+	
+	<div class="scritta_gialla">
+		<span>Valutazioni Azienda</span>
+	</div>
+	
+
+<div class="comment-box">
+	
+	<script type="text/javascript">
+			    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			    
+				var disqus_shortname = 'jesoloimpresa'; // required: replace example with your forum shortname
+			    var disqus_developer=0;
+			
+			    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+			    var disqus_title = '<%= @activity.permalink %>'; 
+				var disqus_identifier = 'http://www.jesoloimpresa.it/aziende-a-jesolo/<%= @activity.category.permalink %>/<%= @activity.permalink %>';
+			    var disqus_url = 'http://www.jesoloimpresa.it/aziende-a-jesolo/<%= @activity.category.permalink %>/<%= @activity.permalink %>';
+				//var disqus_url = 'http://www.jesoloimpresa.it/';
+			
+			    /* * * DON'T EDIT BELOW THIS LINE * * */
+			    (function() {
+			        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			        dsq.src = 'http://jesoloimpresa.disqus.com/embed.js';
+			        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			    })();
+		</script>
+	
+	<div id="disqus_thread">
+				
+		<!-- AddThis Button BEGIN -->
+		<div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+		<a class="addthis_button_preferred_1"></a>
+		<a class="addthis_button_preferred_2"></a>
+		<a class="addthis_button_preferred_3"></a>
+		<a class="addthis_button_preferred_4"></a>
+		<a class="addthis_button_compact"></a>
+		</div>
+		<script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
+		<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=jesoloimpresa"></script>
+		<!-- AddThis Button END -->
+		
+	</div>
+	
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+</div> <!-- /comment-box -->
+
+</div>

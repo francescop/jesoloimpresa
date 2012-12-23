@@ -1,0 +1,143 @@
+<ul title="Attività" selected="true">
+	<% @category.activities.each do |activity| %>
+	
+			<% if activity.name.chars.first < 'a' %>
+			<li class="group">0-9</li>
+			<li><%= link_to activity.name, activity %></li>
+		<% end %>
+
+		<% if activity.name.chars.first == 'a' %>
+			<li class="group">A</li>
+			<li><%= link_to activity.name, activity %></li>
+		<% end %>
+			
+			<% if activity.name.chars.first == 'b' %>
+			<li class="group">B</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'c' %>
+			<li class="group">C</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'd' %>
+			<li class="group">D</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'e' %>
+			<li class="group">E</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'f' %>
+			<li class="group">F</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'g' %>
+			<li class="group">G</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'h' %>
+			<li class="group">H</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'i' %>
+			<li class="group">I</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'j' %>
+			<li class="group">J</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'k' %>
+			<li class="group">K</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'l' %>
+			<li class="group">L</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'm' %>
+			<li class="group">M</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'n' %>
+			<li class="group">N</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'o' %>
+			<li class="group">O</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'p' %>
+			<li class="group">P</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'q' %>
+			<li class="group">Q</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'r' %>
+			<li class="group">R</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 's' %>
+			<li class="group">S</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 't' %>
+			<li class="group">T</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'u' %>
+			<li class="group">U</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'v' %>
+			<li class="group">V</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'w' %>
+			<li class="group">W</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'x' %>
+			<li class="group">X</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+			
+			<% if activity.name.chars.first == 'y' %>
+			<li class="group">Y</li>
+			<li><%= link_to activity.name, activity %></li>
+			<% end %>
+		
+		<% if activity.name.chars.first == 'z' %>
+			<li class="group">Z</li>
+			<li><%= link_to activity.name, activity %></li>
+		<% end %>
+	
+	
+	
+	<% end %>
+		
+</ul>

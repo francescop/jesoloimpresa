@@ -1,0 +1,25 @@
+
+<table>
+  <tr>
+    <th>Nome</th>
+	<th>Tipo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.name %></td>
+    <td><%= category.category_type %></td>
+    <td><%= link_to 'Guarda', category %> |</td>
+    <td><%= link_to 'Edita', edit_category_path(category) %> |</td>
+    <td><%= link_to 'Elimina', category, :confirm => 'Sei sicuro?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuova Categoria', new_category_path %><br /> 
+

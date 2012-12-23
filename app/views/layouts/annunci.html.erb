@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @meta_title %> | JesoloImpresa.it</title>
+  <meta name="keywords" content="<%= @meta_keywords %>" />
+  <meta name="description" content="<%= @meta_description %>" />
+  <%= stylesheet_link_tag 'style' %>
+  <%= javascript_include_tag 'prototype' %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>  
+</head>
+
+<body>
+
+	<% if admin? %>
+		<%= render :partial => 'shared/admin' %>
+	<% end %>
+		
+	<div id="container">
+
+	
+		<div id="global-header">
+			
+			<div id="header-site-links">
+			
+				<div id="header-metanav">
+					<%= render :partial => 'shared/menu' %>
+				</div> <!-- /header-metanav -->
+			</div> <!-- /header-site-links -->
+			
+			
+			
+			<div id="header-navigation">
+				
+				<div id="header-branding">
+								
+				</div> <!-- /header-branding -->
+				
+				
+				
+				<div id="global-searchbox">
+
+					<ul id="searchbox-tabs">
+						<li>Cerca un'azienda</li>
+						<li> <%= link_to_function ">> Per Nome", "$('per_tel').hide();$('per_nome').show()" %> </li>
+						<li> <%= link_to_function ">> Per Numero di Telefono", "$('per_tel').show();$('per_nome').hide()" %></li>
+						<li><%= link_to 'Aziende nella mappa', maps_path %> </li>
+						<li><%= link_to 'Percorso', percorso_path %> </li>
+					</ul>
+					
+					
+					<div id="searchform" class="ui-tabs" style="">
+						<div class="searchform-bg">
+							<div class="searchform-fields">
+								
+								<div id="per_nome">
+								<%= form_for @search, :url => activities_path, :html => {:method => :get} do |f| %>
+    								<%= f.text_field :name_contains, :id => "search-terms" %>
+									<%= f.submit "Cerca Per Nome", :name => nil, :id => "search-submit" %>
+  								<% end %>
+								</div>
+								
+								<div id="per_tel" style="display:none;">
+								<%= form_for @search, :url => activities_path, :html => {:method => :get} do |f| %>
+    								<%= f.text_field :phone_contains, :id => "search-terms" %>
+									<%= f.submit "Cerca Per Telefono", :name => nil, :id => "search-submit" %>
+  								<% end %>
+								</div>
+								
+							</div> <!-- /searchform-fields -->
+						</div> <!-- /searchform-bg -->
+						
+						
+					</div> <!-- /searchform -->
+								
+				</div> <!-- /global-searchbox -->
+				
+				
+				
+				
+			</div> <!-- /header-navigation -->
+			
+			<div id="category-drawer">
+				
+				<div id="popular_categories" class="drawer-content" style="display:none">
+					<div class="category-group">
+						<h2 id="category-group-eat">Assapora</h2>
+						<ul>
+							<%= render(:partial => "sito/cat_type" , :collection => @cat_type_eat, :limit => '15') %>
+						</ul>
+					</div> <!-- /category-group -->
+					
+					<div class="category-group">
+						<h2 id="category-group-play">Divertiti</h2>
+						<ul>
+							<%= render(:partial => "sito/cat_type" , :collection => @cat_type_play, :limit => '15') %>
+						</ul>
+					</div> <!-- /category-group -->
+					
+					<div class="category-group">
+						<h2 id="category-group-live">Conosci</h2>
+						<ul>
+							<%= render(:partial => "sito/cat_type" , :collection => @cat_type_live, :limit => '15') %>
+						</ul>
+					</div> <!-- /category-group -->
+					
+					
+				</div> <!-- /popular_categories -->
+				
+				<div class="drawer-pull">
+					<%= link_to_function "Categorie Più Popolari", "$('popular_categories').show();$('popcat_show').hide();$('popcat_hide').show();return true", :id => 'popcat_show' %>
+					<%= link_to_function "Categorie Più Popolari", "$('popular_categories').hide();$('popcat_hide').hide();$('popcat_show').show()", :id => 'popcat_hide', :style => "display:none;" %>
+					
+					
+				</div> <!-- /drawer-pull -->
+			
+			</div> <!-- /category-drawer -->
+			
+		</div> <!-- /global-header -->
+		
+		<div class="breadcrumb">
+			
+			<%= render :partial => 'shared/breadcrumbs' %>
+		
+		</div> <!-- /breadcrumb -->
+
+		
+		<div id="canvas" class="search show annunci">
+					
+					<div id="annuncileft">
+						<%= render :partial => 'shared/annunci_left_menu' %>	
+					</div>
+					
+					<div id="contentannunci">
+						<%= yield %>						
+					</div> <!-- /contentannunci -->
+					
+		</div> <!-- /canvas -->
+		
+		<div class="footer">
+			
+			<%= render 'shared/footer' %>	
+			
+		</div> <!-- /footer -->	
+	
+		
+	</div> <!-- /container -->
+	
+</body>
+</html>

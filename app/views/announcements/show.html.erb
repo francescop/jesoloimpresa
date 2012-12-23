@@ -1,0 +1,56 @@
+<% if flash[:notice] %><p id="notice"><%= notice %></p><% end %>
+
+
+<div id="titolo_annuncio">
+	<h1><%= @announcement.titolo %></h1>
+</div> <!-- /titolo_annuncio -->
+
+<div id="immagini_annuncio">
+	<div id="immagine_principale_annuncio">
+		<% if @announcement.image1? %>
+			<div id="photo1"><%= image_tag(@announcement.image1.url(:big), :width => '195px', :height => '295px') %></div>
+			<div id="photo2" style="display:none;"><%= image_tag(@announcement.image2.url(:big), :width => '195px', :height => '295px') %></div>
+			<div id="photo3" style="display:none;"><%= image_tag(@announcement.image3.url(:big), :width => '195px', :height => '295px') %></div>
+		<% else %>
+			<p> Immagine non disponibile </p>
+		<% end %>
+	</div> <!-- /immagine_principale_annuncio -->
+	
+	<% if @announcement.image1? %>
+		<div class="immagine_small_annuncio">
+			<%= link_to_function image_tag(@announcement.image1.url(:thumb), :height=>"45px", :width=>"55px"), "$('photo1').show();$('photo2').hide();$('photo3').hide()" %>
+		</div> <!-- /immagine_small_annuncio -->
+	<% end %>
+	
+	<% if @announcement.image2? %>
+		<div class="immagine_small_annuncio">
+			<%= link_to_function image_tag(@announcement.image2.url(:thumb), :height=>"45px", :width=>"55px"), "$('photo2').show();$('photo1').hide();$('photo3').hide()" %>
+		</div> <!-- /immagine_small_annuncio -->
+	<% end %>
+	
+	<% if @announcement.image3? %>
+		<div class="immagine_small_annuncio">
+			<%= link_to_function image_tag(@announcement.image3.url(:thumb), :height=>"45px", :width=>"55px"), "$('photo3').show();$('photo1').hide();$('photo2').hide()" %>
+		</div> <!-- /immagine_small_annuncio -->
+	<% end %>
+	
+</div> <!-- /immagini_annuncio -->
+
+<div id="descrizione_annuncio">
+	<p>
+		<b>Pubblicato:</b> <%= @announcement.created_at.to_formatted_s(:short) %> <br />
+		<b>Categoria:</b> <%= @announcement.announcementcategory.name %> <br />
+		<b>Comune:</b>  <%= @announcement.comune %> <br />
+		<b>Offro / Cerco:</b>  <%= @announcement.offrocerco %> <br />
+		<b>Email:</b> <%= link_to @announcement.email, 'mailto:'+@announcement.email %> <br />
+		<% if @announcement.telefono? %><b>Telefono:</b>  <%= @announcement.telefono %> <br /><% end %>
+		<% if @announcement.sitoweb? %><b>Sitoweb:</b>  <%= @announcement.sitoweb %> <br /><% end %>
+	
+	
+	
+		<b>Descrizione:</b> <br /> <%= @announcement.descrizione %>
+	</p>	
+</div> <!-- /descrizione_annuncio -->
+
+
+<%= link_to 'Indietro', announcementcategories_path %>

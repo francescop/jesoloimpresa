@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @meta_title %> | JesoloImpresa.it</title>
+  <meta name="keywords" content="<%= @meta_keywords %>" />
+  <meta name="description" content="<%= @meta_description %>" />
+  <%= stylesheet_link_tag "style" %>
+  <%= javascript_include_tag :defaults %>
+  <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true_or_false&amp;key=ABQIAAAAdHZt5cbXkH1XdnSWo7RhoRRn9u3PHCLdEGmoj9UuJoQuAIAfnBQW7iXztby2bvw8fqNPObedlT7nqA" type="text/javascript"></script>
+  <!-- %= csrf_meta_tag % -->
+  
+  
+  <script type="text/javascript">
+  	
+	
+
+    //<![CDATA[
+	
+	
+
+    function Load() {
+      if (GBrowserIsCompatible()) {
+
+          	var map = new GMap2(document.getElementById("map"));
+			var bounds = new google.maps.LatLngBounds();
+			var geocoder = new GClientGeocoder();
+			
+	map.addControl(new GLargeMapControl());
+
+	map.setCenter(new GLatLng(45.501446, 12.632699), 14);
+	map.setMapType(G_NORMAL_MAP);	
+	
+	function zoomfit(){
+				newzoom = map.getBoundsZoomLevel (bounds);
+				newcenter = bounds.getCenter();
+				map.setCenter (newcenter,newzoom);
+				}
+				
+				
+
+
+	
+
+    
+function putMarker(address,description) {
+          geocoder.getLatLng(
+            address,
+            function(point) {
+              if (!point) {
+                alert(address + " non trovata");
+              } else {
+                    var marker = new GMarker(point);
+                    map.addOverlay(marker);
+					bounds.extend(point);
+					zoomfit();
+                    GEvent.addListener(marker, "click", function()
+                    {
+                    marker.openInfoWindowHtml(description);
+                    });
+              }
+            }
+          );
+       }; 
+	
+			
+			"<% if params[:controller]== 'activities' && params[:action] == 'show' %>"
+					putMarker("<%= @activity.address %>","<%= @activity.name %> <br /> <%= @activity.address  %> <br /> <%= @activity.phone  %>")
+					bounds.extend(point);
+					 
+			"<% elsif params[:controller]== 'activities' && params[:action] == 'index' %>"
+					"<% @activities.each do |activity| %>"
+					putMarker("<%= activity.address %>","<%= activity.name %> <br /> <%= activity.address  %> <br /> <%= activity.phone  %>")
+					"<% end %> "
+			"<% end %> "
+			
+			
+			"<% if params[:controller]== 'categories' && params[:action] == 'show' %>"
+				"<% @category.activities.each do |activity| %>"
+					putMarker("<%= activity.address %>","<%= activity.name %> <br /> <%= activity.address  %> <br /> <%= activity.phone  %>")
+				"<% end %> "
+			"<% else %>"
+					putMarker()
+			"<% end %> "
+			
+		
+			"<% if @activity.nil? %>"
+					putMarker()
+			"<% end %>"
+     }
+    }
+    //]]>
+    </script>
+
+  
+  
+</head>
+
+<body onload="Load()" onunload="GUnload()">
+
+	<% if admin? %>
+	<div id="admin_area">
+		<h4>Logged as Admin</h4>
+		<%= link_to 'Show Activities', :controller => :activities %>
+		<%= link_to 'Show Categories', :controller => :categories %>
+		<%= link_to 'Logout', :controller => :sessions, :action => :destroy %>	
+	</div> <!-- /admin_area -->
+	<% end %>
+		
+	<div id="wrapper">
+	
+	<div id="header">
+		<div id="menu">
+			<ul>
+				<li><%= link_to 'Home', :controller => :sito, :action => :index %></li>
+				<li><%= link_to 'Aziende', :controller => :categories, :action => :index %></li>
+			</ul>
+		</div> <!-- /menu -->
+		
+		<div id="search">
+			<p>QUI VA INSERITA LA BARRA PER LA RICERCA DELLE ATTIVITA'</p>
+		</div> <!-- /search -->
+	</div> <!-- /header -->
+	
+	
+		<div id="content">
+			
+			<% if params[:controller] == 'sito' %>
+			
+				<div id="home_container"><%= yield %></div> <!-- /home_container -->
+			
+			<% else %>
+			
+				<%= yield %>
+			
+			<% end %>
+		
+		</div> <!-- /content -->
+		
+		
+		
+		
+		<div id="sidebar_left">
+			<h2>Category List</h2>
+			
+			<h3>Eat</h3>
+			<%= render(:partial => "sito/cat_type" , :collection => @cat_type_eat) %>
+			
+			<h3>Play</h3>
+			<%= render(:partial => "sito/cat_type" , :collection => @cat_type_play) %>
+			
+			<h3>Live</h3>
+			<%= render(:partial => "sito/cat_type" , :collection => @cat_type_live) %>
+			
+			<div id="map"></div>
+
+									
+		</div> <!-- /sidebar_left -->
+		
+		
+	</div> <!-- /wrapper -->
+	
+
+
+</body>
+</html>

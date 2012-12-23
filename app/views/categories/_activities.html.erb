@@ -1,0 +1,50 @@
+
+<div class="clearfix paid-listing result track-listing track-restaurant vcard">
+	
+	<div <% if (activities.peso < 10) %> class="banner" <% else %> class="listing_content" <% end %> >
+		
+		 <div class="info"> 
+				
+
+			<h3 class="business-name fn org"><%= link_to activities.name, category_activity_path(@category,activities) %></h3>
+			<!-- h3 class="business-name fn org"><%= link_to activities.name, activities %></h3-->
+			<span class="listing-address adr"><%= activities.address %></span>
+			<span class="business-phone phone"><%= activities.phone %></span>
+			<br />
+				
+		</div> <!-- /info -->
+		
+		<div class="rating">
+			
+			<% if activities.img1? %>
+				<%= image_tag(activities.img1.url, :alt => activities.altimage1, :title => activities.name, :width => '125px', :height => '80px') %>
+			<% else %>
+				<img src="/images/imm_box.jpg" />
+			<% end %>
+			
+		</div> <!-- /rating -->
+		
+		<div class="what-where">
+			
+			<% if activities.website? %>
+					<!-- %= link_to '>> Sito Web', "http://"+activities.website, :target => "_blank", :style => "display:none;" %><br / -->
+			<% end %>
+			
+			<% if admin? %> 
+				<%= link_to 'Edita Attività', edit_activity_path(activities) %> | 
+				<%= link_to 'Elimina Attività', activities, :confirm => 'Sei sicuro?', :controller => :activities, :method => :delete %>
+			<% end %>
+		
+		</div> <!-- /what-where -->
+		
+		
+		
+	</div> <!-- /listing_content -->
+	
+	
+		<p class="image_block">
+		
+		</p>
+
+	
+</div>

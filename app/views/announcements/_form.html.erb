@@ -1,0 +1,92 @@
+<%= form_for(@announcement, :html => { :multipart => true }) do |f| %>
+  <% if @announcement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
+
+      <ul>
+      <% @announcement.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  
+
+<img src="/images/static/annunci_h1.png" alt="1" style="float:left;" />
+
+  <div class="field">
+	<%= f.label 'Categoria' %>
+	<%= f.collection_select :announcementcategory_id, Announcementcategory.all, :id, :name, :prompt => true  %>
+  </div>
+  <div class="field">
+    <%= f.label :comune %>
+    <%= f.text_field :comune %>
+  </div>
+  <div class="field">
+    <%= f.label :indirizzo %>
+    <%= f.text_field :indirizzo %>
+  </div>
+  
+<img src="/images/static/annunci_h2.png" alt="2" style="float:left;" />
+
+  <div class="field">
+    <%= f.label :titolo %>
+    <%= f.text_field :titolo %>
+  </div>
+  <div class="field">
+    <%= f.label 'Offro/Cerco' %>
+    
+	
+	
+	<%= radio_button("announcement", "offrocerco", "offro", :checked => true) %> <span>Offro</span>
+ 	<%= radio_button("announcement", "offrocerco", "cerco") %> <span>Cerco</span>
+
+	
+  </div>
+  <div class="field">
+    <%= f.label 'Descrizione:' %>
+    <%= f.text_area :descrizione %>
+  </div>
+  
+<img src="/images/static/annunci_h3.png" alt="3" style="float:left;" />
+
+  <div class="field">
+    <%= f.label 'Email:' %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label 'Nome:' %>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label 'Telefono:' %>
+    <%= f.text_field :telefono %>
+  </div>
+  <div class="field">
+    <%= f.label 'Sito Web:' %>
+    <%= f.text_field :sitoweb %>
+  </div>
+  
+  <div class="field">
+    <%= f.label 'Immagine Principale:' %>
+    <%= f.file_field :image1 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label 'Immagine 2:' %>
+    <%= f.file_field :image2 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label 'Immagine 3:' %>
+    <%= f.file_field :image3 %>
+  </div>
+  
+  
+  
+  <div class="actions">
+  	<p style="margin-top:20px;float:left;text-align:left;">Premendo su Crea Annuncio confermi di aver letto ed accettato le <a href="/condizioni.txt" target="_blank">condizioni di utilizzo e l'informativa sulla privacy</a>.</p>
+    <%= f.submit "Crea Annuncio" %>
+  </div>
+<% end %>

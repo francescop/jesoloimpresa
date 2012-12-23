@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @meta_title %> | JesoloImpresa.it</title>
+  <meta name="keywords" content="<%= @meta_keywords %>" />
+  <meta name="description" content="<%= @meta_description %>" />
+  <%= stylesheet_link_tag "style" %>
+  <%= javascript_include_tag 'prototype' %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+  <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true_or_false&amp;key=ABQIAAAAdHZt5cbXkH1XdnSWo7RhoRRn9u3PHCLdEGmoj9UuJoQuAIAfnBQW7iXztby2bvw8fqNPObedlT7nqA" type="text/javascript"></script>
+  
+  
+  <script type="text/javascript">
+  	
+	
+
+    //<![CDATA[
+	
+	
+
+    function Load() {
+      if (GBrowserIsCompatible()) {
+
+          	var map = new GMap2(document.getElementById("map"));
+			var bounds = new google.maps.LatLngBounds();
+			var geocoder = new GClientGeocoder();
+			
+	map.addControl(new GLargeMapControl());
+
+	map.setCenter(new GLatLng(45.501446, 12.632699), 10);
+	map.setMapType(G_NORMAL_MAP);	
+	
+	function zoomfit(){
+				newzoom = map.getBoundsZoomLevel (bounds);
+				newcenter = bounds.getCenter();
+				map.setCenter (newcenter,newzoom);
+				}
+				
+				
+
+
+	
+
+    
+function putMarker(address,description) {
+          geocoder.getLatLng(
+            address,
+            function(point) {
+              if (!point) {
+                alert(address + " non trovata");
+              } else {
+                    var marker = new GMarker(point);
+                    map.addOverlay(marker);
+					bounds.extend(point);
+					zoomfit();
+                    GEvent.addListener(marker, "click", function()
+                    {
+                    marker.openInfoWindowHtml(description);
+                    });
+              }
+            }
+          );
+       }; 
+	
+			
+			"<% if params[:controller]== 'activities' && params[:action] == 'show' %>"
+					putMarker("<%= @activity.address %>","<%= @activity.name %> <br /> <%= @activity.address  %> <br /> <%= @activity.phone  %>")
+					bounds.extend(point);
+					 
+			"<% elsif params[:controller]== 'activities' && params[:action] == 'index' %>"
+					"<% @activities.each do |activity| %>"
+					putMarker("<%= activity.address %>","<%= activity.name %> <br /> <%= activity.address  %> <br /> <%= activity.phone  %>")
+					"<% end %> "
+			"<% end %> "
+			
+			
+			"<% if params[:controller]== 'categories' && params[:action] == 'show' %>"
+				"<% @category.activities.each do |activity| %>"
+					putMarker("<%= activity.address %>","<%= activity.name %> <br /> <%= activity.address  %> <br /> <%= activity.phone  %>")
+				"<% end %> "
+			"<% else %>"
+					putMarker()
+			"<% end %> "
+			
+		
+			"<% if @activity.nil? %>"
+					putMarker()
+			"<% end %>"
+     }
+    }
+    //]]>
+    </script>
+
+  
+  
+</head>
+
+<body onload="Load()" onunload="GUnload()">
+
+	<% if admin? %>
+		<div id="admin_area">
+		<h4>Ciao Raffaele!</h4>
+		<br />
+		<ul>
+			<li><%= link_to 'Show Activities', :controller => :activities %> |</li>
+			<li><%= link_to 'Show Categories', :controller => :categories %> |</li>
+			<li><%= link_to 'Show News', :controller => :news %> |</li>
+			<li><%= link_to 'Logout', :controller => :sessions, :action => :destroy %> </li>
+		</ul>
+		
+		<ul>
+			<li><%= link_to 'List Activities', :controller => :activities, :action => :list %> |</li>
+			<li><%= link_to 'List Categories', :controller => :categories, :action => :list %> |</li>
+		</ul>
+			
+	</div> <!-- /admin_area -->
+	<% end %>
+		
+	<div id="container">
+
+	
+		<div id="global-header">
+			
+			<div id="header-site-links">
+			
+				<div id="header-metanav">
+					<ul>
+						<li><%= link_to 'Home', :controller => :sito, :action => :index %></li>
+						<li><%= link_to 'Categorie', :controller => :categories, :action => :index %></li>
+						<li>MAPPA DELLE AZIENDE</li>
+						<li>Iscrivi la tua azienda</li>
+						<li>PUBBLICITA'</li>
+					</ul>
+				</div> <!-- /header-metanav -->
+				
+			</div> <!-- /header-site-links -->
+			
+			
+			
+			<div id="header-navigation">
+				
+				<div id="header-branding">
+								
+				</div> <!-- /header-branding -->
+				
+				
+				
+				<div id="global-searchbox">
+
+					<ul id="searchbox-tabs">
+						<li>Cerca un'azienda</li>
+						<li> <%= link_to_function ">> Per Nome", "$('per_tel').hide();$('per_nome').show()" %> </li>
+						<li> <%= link_to_function ">> Per Numero di Telefono", "$('per_tel').show();$('per_nome').hide()" %></li>
+					</ul>
+					
+					
+					<div id="searchform" class="ui-tabs" style="">
+						<div class="searchform-bg">
+							<div class="searchform-fields">
+								
+								<div id="per_nome">
+								<%= form_for @search, :url => activities_path, :html => {:method => :get} do |f| %>
+    								<%= f.text_field :name_contains, :id => "search-terms" %>
+									<%= f.submit "Cerca Per Nome", :name => nil, :id => "search-submit" %>
+  								<% end %>
+								</div>
+								
+								<div id="per_tel" style="display:none;">
+								<%= form_for @search, :url => activities_path, :html => {:method => :get} do |f| %>
+    								<%= f.text_field :phone_contains, :id => "search-terms" %>
+									<%= f.submit "Cerca Per Numero di Telefono", :name => nil, :id => "search-submit" %>
+  								<% end %>
+								</div>
+								
+							</div> <!-- /searchform-fields -->
+						</div> <!-- /searchform-bg -->
+						
+						
+					</div> <!-- /searchform -->
+								
+				</div> <!-- /global-searchbox -->
+				
+				
+				
+				
+			</div> <!-- /header-navigation -->
+			
+			<div id="category-drawer">
+				
+				<div class="drawer-pull">
+					<!-- a href="#"><span>Open Popular Categories</span></a -->
+					
+				</div> <!-- /drawer-pull -->
+			
+			</div> <!-- /category-drawer -->
+			
+		</div> <!-- /global-header -->
+		
+		<div class="breadcrumb">
+		
+		</div> <!-- /breadcrumb -->
+
+		
+		<div id="canvas" class="search show">
+			
+			<% if params[:controller] == 'categories' && params[:action] == 'index' %>
+			
+				<% if params[:controller] == 'sito' %>
+					
+					<div id="home_container"><%= yield %></div> <!-- /home_container -->
+					
+				<% else %>
+					
+					<%= yield %>
+					
+				<% end %>
+				
+			<% else %>			
+			
+				<div id="left-column">
+					
+					<% if params[:controller] == 'sito' %>
+						
+						<div id="home_container"><%= yield %></div> <!-- /home_container -->
+						
+					<% else %>
+						
+						<%= yield %>
+						
+					<% end %>
+					
+				</div> <!-- /left-column -->
+			
+			
+				<div id="right-column">
+					
+					<div id="map-results">
+						
+						<h2 class="heading-orange">Risultati sulla mappa</h2>
+					
+						<% if params[:controller] == 'categories' && params[:action] == 'index' %>
+						
+							<div id="map" style="display:none;"></div>
+						
+						<% else %>
+							
+							<div id="map"></div>
+							
+						<% end %>
+					
+					</div> <!-- /map-results -->
+					
+				</div> <!-- /right-column -->
+				
+			<% end %>
+			
+		</div> <!-- /canvas -->		
+		
+	</div> <!-- /container -->
+	
+</body>
+</html>

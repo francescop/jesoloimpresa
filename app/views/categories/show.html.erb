@@ -1,0 +1,32 @@
+<% if flash[:notice] %><p id="notice"><%= notice %></p><% end %>
+
+<h1><%= @category.name %> a Jesolo <% if admin? %> | <%= link_to 'Edit', edit_category_path(@category) %> <% end %></h1>
+<h2><%= @category.description %></h2>
+
+<!-- p>
+	<b>Attivita' in questa categoria:</b>
+	<%= @category.activities.count %>
+</p -->
+
+<div id="search-results">
+	
+	<div id="search-content">
+	
+		<div id="results">
+			
+			<%= render(:partial => "activities" , :collection => @category.activities.all(:order=> "peso")) %>
+			
+		</div> <!-- /results -->
+		
+	</div> <!-- /search-content -->
+	
+</div> <!-- /search-results -->
+
+
+
+
+
+
+
+
+

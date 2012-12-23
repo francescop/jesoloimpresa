@@ -1,0 +1,24 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+Announcement:
+  fields:
+    default: announcementcategory_id, comune, indirizzo, titolo, offrocerco, email, nome, telefono, sitoweb, attivo, permalink, image1_file_name, image2_file_name, image3_file_name
+    form: announcementcategory_id, comune, indirizzo, titolo, offrocerco, descrizione, email, nome, telefono, sitoweb, attivo, permalink, image1_file_name, image2_file_name, image3_file_name
+  order_by: 
+  relationships: 
+  filters: 
+  search: 
+  application: jesoloimpresa
+
+Announcementcategory:
+  fields:
+    default: name, permalink
+    form: name, permalink
+  order_by: 
+  relationships: 
+  filters: 
+  search: name
+  application: jesoloimpresa
+

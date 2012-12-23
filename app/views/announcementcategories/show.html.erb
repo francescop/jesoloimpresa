@@ -1,0 +1,86 @@
+<% if flash[:notice] %><p id="notice"><%= notice %></p><% end %>
+
+	
+	
+<div id="all_announcements">	
+	<% @annunci.each do |annuncio| %>
+		<div class="show_annunci">
+			
+			<div class="show_annunci_img">
+				
+				<% if annuncio.image1_file_name %>
+					<%= image_tag(annuncio.image1.url(:medium), :width => '95px', :height => '115px') %>
+				<% else %>
+					<p>immagine non disponibile</p>		
+				<% end %>
+				
+			</div> <!-- /show_annunci_img -->
+			
+			
+			<h3><%= link_to annuncio.titolo, announcementcategory_announcement_path(@announcementcategory,annuncio) %></h3>
+			
+			<br /><br />
+			
+			<p><%= truncate(annuncio.descrizione, :length => 160) %></p>
+			
+		</div> <!-- /show_annunci -->
+	<% end %>
+</div> <!-- /all_announcements -->
+
+<% if @annunci_offro %>
+	<div id="offro" style="display:none;">
+		<h2>Offro</h2>
+		<% @annunci_offro.each do |annuncio| %>
+			<div class="show_annunci">
+				
+				<div class="show_annunci_img">
+					
+					<% if annuncio.image1_file_name %>
+						<p>immagine disponibile</p>
+					<% else %>
+						<p>immagine non disponibile</p>		
+					<% end %>
+					
+				</div> <!-- /show_annunci_img -->
+				
+				
+				<h3><%= link_to annuncio.titolo, announcementcategory_announcement_path(@announcementcategory,annuncio) %></h3>
+				
+				<br /><br />
+				
+				<p><%= truncate(annuncio.descrizione, :length => 160) %></p>
+				
+			</div> <!-- /show_annunci -->
+		<% end %>
+	</div> <!-- /offro -->
+<% end %>
+
+
+<% if @annunci_cerco %>
+	<div id="cerco" style="display:none;">
+		<h2>Cerco</h2>
+		<% @annunci_cerco.each do |annuncio| %>
+			<div class="show_annunci">
+				
+				<div class="show_annunci_img">
+					
+					<% if annuncio.image1_file_name %>
+						<p>immagine disponibile</p>
+					<% else %>
+						<p>immagine non disponibile</p>		
+					<% end %>
+					
+				</div> <!-- /show_annunci_img -->
+				
+				
+				<h3><%= link_to annuncio.titolo, announcementcategory_announcement_path(@announcementcategory,annuncio) %></h3>
+				
+				<br /><br />
+				
+				<p><%= truncate(annuncio.descrizione, :length => 160) %></p>
+				
+			</div> <!-- /show_annunci -->
+		<% end %>
+	</div> <!-- /cerco -->
+<% end %>
+

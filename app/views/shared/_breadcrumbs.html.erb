@@ -1,0 +1,44 @@
+<ul>
+	<li><%= link_to 'Home >', :controller => :sito %></li>
+	
+<% if params[:controller]== 'activities' && params[:action] == 'show' %>
+	
+	<li><a href="/aziende-a-jesolo"> Categorie ></a></li>
+	<li style="color:white;font-weight: bold;"><%= link_to @activity.category.name, :controller => :categories, :action => :show, :id => @activity.category %>  > <%= @activity.name %></li>
+		
+		<% end %>
+		
+<% if params[:controller]== 'categories' && params[:action] == 'index' %>
+	
+	<li><a href="/aziende-a-jesolo"> Categorie ></a></li>
+	
+	<% end %>	
+
+<% if params[:controller]== 'categories' && params[:action] == 'show' %>
+	
+	<li><a href="/aziende-a-jesolo"> Categorie ></a></li>
+	<li class="white"><%= link_to @category.name, :controller => :categories, :action => :show, :id => @category %></li>
+	
+	<% end %>
+	
+<% if params[:controller]== 'announcementcategories' && params[:action] == 'show' %>
+
+	<li><%= link_to 'Annunci > ', announcementcategories_path %> <%= link_to @announcementcategory.name, :controller => :announcementcategories, :action => :show, :id => @announcementcategory %></li>
+	
+	<% end %>
+	
+<% if params[:controller]== 'announcements' && params[:action] == 'show' %>
+
+	<li><%= link_to 'Annunci > ', announcementcategories_path %> <%= link_to @announcement.announcementcategory.name, :controller => :announcementcategories, :action => :show, :id => @announcement.announcementcategory %> > <%= @announcement.titolo %> </li>
+	
+	<% end %>
+	
+<% if params[:controller]== 'news' && params[:action] == 'show' %>
+
+	<li><%= link_to 'News > ', :controller => :news, :action => :index  %> <b style="color:white;font-weight: bold;"><%= @news.title %></b> </li>
+	
+	<% end %>
+	
+	
+			
+			</ul>

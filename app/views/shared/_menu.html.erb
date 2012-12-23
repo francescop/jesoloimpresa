@@ -1,0 +1,10 @@
+<ul>
+						<li><%= link_to 'Home', root_path %></li>
+						<li><%= link_to 'Categorie', :controller => :categories, :action => :index %></li>
+						<li><%= link_to 'MAPPA DELLE AZIENDE', :controller => :maps, :action => :index %></li>
+						<li><%= link_to 'Contatti', :controller => :sito, :action => :contatti %></li>
+						<li><%= link_to 'Servizi', :controller => :sito, :action => :servizi %></li>
+						<li><%= link_to 'Chi Siamo', :controller => :sito, :action => :chisiamo %></li>
+						<li><%= link_to 'Mobile', :controller => :sito, :action => :mobile %></li>
+						<li><%= link_to 'Annunci', {:controller => :announcementcategories, :action => :index}, :style => 'border-right:none' %></li>
+</ul>

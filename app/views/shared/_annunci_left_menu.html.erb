@@ -1,0 +1,39 @@
+<div id="annuncileftmenu" <% if params[:controller] == 'announcementcategories' && params[:action] == 'show' %> style="height: 225px;" <% end %>>
+	<h1 style="text-decoration:underline;">ANNUNCI</h1>
+	<%= link_to raw('Inserisci Annuncio <span>GRATIS</span>'),new_announcement_path %>
+	
+	
+	<% if params[:controller] == 'announcementcategories' && params[:action] == 'show' %>
+		<h2 style="text-decoration:underline;margin-top:15px;">FILTRA ANNUNCI</h2>
+		<ul>
+		
+			<li><%= link_to_function "Mostra Tutti", "$('cerco').hide();$('offro').hide();$('all_announcements').show()" %></li>
+			
+			<% if @annunci_offro %>
+				<li><%= link_to_function "Offro", "$('all_announcements').hide();$('cerco').hide();$('offro').show()" %></li>
+			<% end%>
+			
+			<% if @annunci_cerco %>
+				<li><%= link_to_function "Cerco", "$('all_announcements').hide();$('offro').hide();$('cerco').show()" %></li>
+			<% end%>
+		
+		</ul>
+	<% end %>
+	
+</div> <!-- /annuncileftmenu -->
+
+
+<div id="annuncileftmenu_banner">
+	<script type="text/javascript"><!--
+			google_ad_client = "ca-pub-3415296114550163";
+			/* jesolo 2 */
+			google_ad_slot = "7233754183";
+			google_ad_width = 200;
+			google_ad_height = 200;
+			//-->
+	</script>
+	<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+</div>
+
+

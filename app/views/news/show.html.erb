@@ -1,0 +1,37 @@
+<% if flash[:notice] %><p id="notice"><%= notice %></p><% end %>
+
+<div class="content_large">
+
+		<% if admin? %> 
+			<%= link_to 'Edit News', edit_news_path(@news) %> | 
+			<%= link_to 'Destroy News', @news, :confirm => 'Are you sure?', :controller => :news, :method => :delete %><br />
+		<% end %>
+		
+		
+		<div class="news_show_image">
+			
+			<div id="gallery-heading" class="news_show_image clearfix">
+				
+				<h1><%= @news.title %></h1>
+			</div> <!-- /gallery-heading -->
+			
+			<%= image_tag(@news.big_image.url, :alt => @news.big_image_alt, :title => @news.title, :width => "615px") %>
+			
+			
+			
+		</div> <!-- /news_show_image -->
+		
+		<div class="activity_page_description">
+			
+			<div id="brief_description">
+				<h3 id="news_show_h3"><%= @news.subtitle %></h3>
+				
+					<p>
+						<%= @news.description %>
+					</p>
+										
+			</div> <!-- /brief_description -->
+							
+		</div> <!-- /activity_page_description -->
+		
+</div>

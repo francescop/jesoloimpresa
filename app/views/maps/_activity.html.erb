@@ -1,0 +1,45 @@
+
+<div class="clearfix paid-listing result track-listing track-restaurant vcard">
+	
+	<div class="listing_content">
+		
+		 <div class="info"> 
+				
+			
+			
+			<h3 class="business-name fn org"><%= link_to @activity.name, category_activity_path(@activity.category,@activity) %></h3>
+			<span class="listing-address adr"><%= @activity.address %></span>
+			<span class="business-phone phone"><%= @activity.phone %></span>
+			<br />
+				
+		</div> <!-- /info -->
+		
+		<div class="rating" style="float:left;">
+			
+			<% if @activity.img1? %>
+				<%= image_tag(@activity.img1.url, :alt => @activity.altimage1, :title => @activity.name, :width => '125px', :height => '80px') %>
+			<% else %>
+				Immagine non disponibile.
+			<% end %>
+			
+		</div> <!-- /rating -->
+		
+		<div class="what-where">
+			
+			<% if @activity.website? %>
+					<%= link_to '>> Sito Web', "http://"+@activity.website, :target => "_blank" %><br />
+			<% end %>
+
+		</div> <!-- /what-where -->
+		
+		
+		
+	</div> <!-- /listing_content -->
+	
+	
+		<p class="image_block">
+		
+		</p>
+
+	
+</div>

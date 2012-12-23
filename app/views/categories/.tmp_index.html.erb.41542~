@@ -1,0 +1,19 @@
+<h1>Categorie</h1>
+
+<% if admin? %>
+<%= link_to 'Nuova Categoria', new_category_path %> |
+<%= link_to 'Lista Categorie', list_categories_path %><br /> <br /> <br />
+<% end %>
+
+<div class="clearfix">
+	
+
+		<p class="group-title"></p>
+		<ul class="big_list">
+			<% @categories.each do |category| %>
+    			<li><%= link_to category.name, :controller => :categories, :action => :show, :id => category %></li>
+			<% end %>
+		</ul>
+	
+	
+</div> <!-- /clearfix  -->

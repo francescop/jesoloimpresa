@@ -1,0 +1,3 @@
+<%= form_tag :action => 'search', :id => @category %>
+<%= collection_select @category, 'id', @categories, :id, :name, :prompt => 'Seleziona Categoria' %>
+<%= submit_tag "Cerca" %>

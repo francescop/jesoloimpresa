@@ -1,0 +1,5 @@
+<ul title="Eventi" selected="true">
+	<% @news.each do |news| %>
+    <li><%= link_to news.title, news %></li>
+	<% end %>
+</ul>

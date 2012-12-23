@@ -1,0 +1,35 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+Activity:
+  fields:
+    default: name, address, metatag, expiredate, phone, website, peso, banner, category
+    #default: name, address, metatag, img1, img2, img3, img4, img5, img6, category_id, expiredate, altimage1, altimage2, altimage3, altimage4, altimage5, altimage6, phone, website, peso, banner, category
+    form: name, address, metatag, description, complete_description, img1, img2, img3, img4, img5, img6, category_id, expiredate, altimage1, altimage2, altimage3, altimage4, altimage5, altimage6, phone, website, peso, banner, category
+  order_by: 
+  relationships: category
+  filters: 
+  search: name
+  application: jesoloimpresa
+
+Category:
+  fields:
+    default: name, metatag
+    form: name, metatag, description
+  order_by: 
+  relationships: activities
+  filters: 
+  search: name
+  application: jesoloimpresa
+
+News:
+  fields:
+    default: title, subtitle, big_image, big_image_alt
+    form: title, subtitle, big_image, big_image_alt, description
+  order_by: 
+  relationships: 
+  filters: 
+  search: title
+  application: jesoloimpresa
+

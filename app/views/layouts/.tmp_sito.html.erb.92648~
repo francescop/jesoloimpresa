@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @meta_title %> | JesoloImpresa.it</title>
+  <meta name="keywords" content="<%= @meta_keywords %>" />
+  <meta name="description" content="<%= @meta_description %>" />
+  <%= stylesheet_link_tag "style" %>
+  <%= csrf_meta_tag %>
+  <script src="/javascripts/jquery.js" type="text/javascript"></script>
+  <script src="/javascripts/s3Slider.js" type="text/javascript"></script>
+   
+   
+   
+   
+  <script type="text/javascript">
+  	jQuery(document).ready(function() {
+   	jQuery('#s3slider').s3Slider({
+      timeOut: 7000
+   	});
+	});
+  </script>
+  
+ <script type="text/javascript">
+jQuery(function(){
+jQuery('#eat_div').hover(
+ function(){
+ jQuery('#eat_div .post_image').fadeOut(300, function(){
+ jQuery('#eat_div .post_body').fadeIn(300);
+ });
+ },
+ function(){
+ jQuery('#eat_div .post_body').fadeOut(300, function(){
+ jQuery('#eat_div .post_image').fadeIn(300);
+ });
+ }
+ );
+ 
+ 
+ jQuery('#play_div').hover(
+ function(){
+ jQuery('#play_div .post_image').fadeOut(300, function(){
+ jQuery('#play_div .post_body').fadeIn(300);
+ });
+ },
+ function(){
+ jQuery('#play_div .post_body').fadeOut(300, function(){
+ jQuery('#play_div .post_image').fadeIn(300);
+ });
+ }
+ );
+ 
+ 
+ jQuery('#live_div').hover(
+ function(){
+ jQuery('#live_div .post_image').fadeOut(300, function(){
+ jQuery('#live_div .post_body').fadeIn(300);
+ });
+ },
+ function(){
+ jQuery('#live_div .post_body').fadeOut(300, function(){
+ jQuery('#live_div .post_image').fadeIn(300);
+ });
+ }
+ );
+ 
+  jQuery('#news_div').hover(
+ function(){
+ jQuery('#news_div .post_image').fadeOut(300, function(){
+ jQuery('#news_div .post_body').fadeIn(300);
+ });
+ },
+ function(){
+ jQuery('#news_div .post_body').fadeOut(300, function(){
+ jQuery('#news_div .post_image').fadeIn(300);
+ });
+ }
+ );
+
+
+ 
+ 
+}); 
+  </script>
+  
+
+
+	
+</head>
+
+<body>
+
+	<% if admin? %>
+	<div id="admin_area">
+		<%= render :partial => 'shared/admin' %>
+	<% end %>
+		
+	<div id="container">
+
+	
+		<div id="global-header">
+			
+			<div id="header-site-links">
+			
+				<div id="header-metanav">
+					<%= render :partial => 'shared/menu' %>
+				</div> <!-- /header-metanav -->
+				
+			</div> <!-- /header-site-links -->
+			
+			
+			
+			<div id="header-navigation">
+				
+				<div id="header-branding">
+								
+				</div> <!-- /header-branding -->
+				
+				<div id="global-searchbox">
+
+					<ul id="searchbox-tabs">
+						<li>Cerca un'azienda</li>
+						<li><a onclick="$('#per_nome').show();$('#per_tel').hide();" href="#"> >> Per Nome</a></li>
+						<li><a onclick="$('#per_nome').hide();$('#per_tel').show();" href="#"> >> Per Numero di Telefono</a></li>
+					</ul>
+					
+					
+					<div id="searchform" class="ui-tabs" style="">
+						<div class="searchform-bg">
+							<div class="searchform-fields">
+								
+								<div id="per_nome">
+								<%= form_for @search, :url => activities_path, :html => {:method => :get} do |f| %>
+    								<%= f.text_field :name_contains, :id => "search-terms" %>
+									<%= f.submit "Cerca Per Nome", :name => nil, :id => "search-submit" %>
+  								<% end %>
+								</div>
+								
+								<div id="per_tel" style="display:none;">
+								<%= form_for @search, :url => activities_path, :html => {:method => :get} do |f| %>
+    								<%= f.text_field :phone_contains, :id => "search-terms" %>
+									<%= f.submit "Cerca Per Numero di Telefono", :name => nil, :id => "search-submit" %>
+  								<% end %>
+								</div>
+								
+							</div> <!-- /searchform-fields -->
+						</div> <!-- /searchform-bg -->
+						
+						
+					</div> <!-- /searchform -->
+								
+				</div> <!-- /global-searchbox -->
+				
+				
+				
+				
+			</div> <!-- /header-navigation -->
+			
+			
+			
+			<div id="category-drawer">
+				
+				<div id="popular_categories" class="drawer-content" style="display:none">
+					
+					<div class="category-group">
+						<h2>Assapora</h2>
+						<ul>
+							<%= render(:partial => "cat_type" , :collection => @cat_type_eat, :limit => 5) %>
+						</ul>
+					</div> <!-- /category-group -->
+					
+					<div class="category-group">
+						<h2>Divertiti</h2>
+						<ul>
+							<%= render(:partial => "cat_type" , :collection => @cat_type_play, :limit => 5) %>
+						</ul>
+					</div> <!-- /category-group -->
+					
+					<div class="category-group">
+						<h2>Conosci</h2>
+						<ul>
+							<%= render(:partial => "cat_type" , :collection => @cat_type_live, :limit => 5) %>
+						</ul>
+					</div> <!-- /category-group -->
+					
+					
+				</div> <!-- /popular_categories -->
+				
+				<div class="drawer-pull">
+					<a id="popcat_show" href="#"><span>Categorie Pi&ugrave; Popolari</span></a>
+					<a id="popcat_hide" style="display:none" href="#"><span>Categorie Pi&ugrave; Popolari</span></a>
+					<script>
+    				$("#popcat_show").click(function () {
+      				$("#popular_categories").show("slow");
+					$("#popcat_show").hide();
+					$("#popcat_hide").show();
+					
+    				});    
+					</script>
+					
+					<script>
+    				$("#popcat_hide").click(function () {
+      				$("#popular_categories").hide("slow");
+					
+					$("#popcat_hide").hide();
+					$("#popcat_show").show();
+    				});    
+					</script>
+					
+				</div> <!-- /drawer-pull -->
+			
+			</div> <!-- /category-drawer -->
+			
+		</div> <!-- /global-header -->
+		
+		<div class="breadcrumb">
+		
+		</div> <!-- /breadcrumb -->
+
+		
+		<div id="canvas" class="search show">
+			
+			<% if params[:controller] == 'categories' && params[:action] == 'index' %>
+			
+				<% if params[:controller] == 'sito' %>
+					
+					<div id="home_container"><%= yield %> </div> <!-- /home_container -->
+					
+				<% else %>
+					
+					<%= yield %>
+					
+				<% end %>
+				
+			<% else %>			
+			
+				<!-- div id="left-column" -->
+					
+					<% if params[:controller] == 'sito' %>
+						
+						<div id="home_container">
+							
+							<%= yield %>
+						
+						</div> <!-- /home_container -->
+						
+						
+					<% else %>
+						
+						<%= yield %>
+						
+					<% end %>
+					
+				<!-- /div --> <!-- /left-column -->
+			
+			
+				<!-- div id="right-column" -->
+					
+					<!-- div id="meteo_widget" align="center" -->
+						<!-- script src="http://www.weatherforecastmap.com/weather1.php?zona=italy_venice"></script -->
+						<!-- a title="Weather Today in Jesolo" href="http://www.weatherforecastmap.com/italy/venice">Weather Today in Jesolo</a> -->
+					<!-- /div -->
+					
+					
+
+				<!-- /div --> <!-- /right-column -->
+				
+				
+			<% end %>
+			
+		</div> <!-- /canvas -->		
+		
+	</div> <!-- /container -->
+	
+</body>
+</html>

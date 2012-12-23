@@ -1,0 +1,47 @@
+<!-- img src="/images/static/SEMIO.png" style="width:100%;margin-bottom:30px;"/ -->
+
+<% if admin? %>
+<%= link_to 'Nuova Categoria', new_category_path %> |
+<%= link_to 'Lista Categorie', list_categories_path %><br /> <br /> <br />
+<% end %>
+
+<h1>Aziende di Jesolo</h1>
+
+<p style="font-size:14px;">Navigando tra le nostre categorie potrai trovare quello che cerchi in modo rapido e intuitivo. In ogni <br /> sezione sono raggruppate le aziende appartenenti
+a settori merceologici affini; basteranno pochi <br /> semplici click per consultare i loro profili.</p>
+
+<div class="clearfix">
+
+		<p class="group-title"></p>
+		
+		<div style="float: right;width: 300px;">
+		<% 3.times do %>
+		<div id="banner_categories_index">
+								
+								<script type="text/javascript"><!--
+									google_ad_client = "ca-pub-3415296114550163";
+									/* jesoloimpresa 2 */
+									google_ad_slot = "6019406429";
+									google_ad_width = 300;
+									google_ad_height = 250;
+									//-->
+									</script>
+									<script type="text/javascript"
+									src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+									</script>
+						
+		</div>
+		<% end %>
+		</div>
+
+		
+		<ul class="big_list">
+			<% @categories.each do |category| %>
+    			<li><%= link_to category.name, :controller => :categories, :action => :show, :id => category %></li>
+			<% end %>
+		</ul>
+		
+		
+	
+	
+</div> <!-- /clearfix  -->

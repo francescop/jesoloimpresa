@@ -1,0 +1,7 @@
+<ul class="big_list_annunci">
+	<% @announcementcategories.each do |announcementcategory| %>
+	  <li><%= link_to announcementcategory.name, announcementcategory %></li>
+	<% end %>
+</ul>
+
+<br />

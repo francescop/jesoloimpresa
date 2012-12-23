@@ -1,0 +1,37 @@
+<%= form_for @item, :url  => options[:options], :html => { :multipart => true } do |form| %>
+
+  <% if @item.errors.any? %>
+  <div id="errorExplanation">
+    <h3><%= pluralize(@item.errors.count, "error") %> prohibited this page from being saved:</h3>
+    <ul>
+    <% @item.errors.full_messages.each do |full_message| %>
+      <li><%= full_message %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <fieldset class="inputs">
+    <%= form.label 'Title' %><br />
+    <%= form.text_field :title %>
+  </fieldset>
+  <fieldset class="inputs">
+    <%= form.label 'Url' %><br />
+    <%= form.text_field :url %>
+  </fieldset>
+  
+  <fieldset class="inputs">
+    <%= form.label 'Immagine' %><br />
+    <%= form.file_field :img %>
+	<br />
+	<%= form.label :alt %><br />
+	<%= form.text_field :alt %>
+  </fieldset>
+
+  <fieldset class="buttons">
+    <ol>
+      <li><%= submit_tag options[:button] , :class => "commit" %> or <%= link_to _t("Cancel and go back").downcase, :action => "index" %></li>
+    </ol>
+  </fieldset>
+
+<% end %>

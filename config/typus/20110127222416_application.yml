@@ -1,0 +1,14 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+Banner:
+  fields:
+    default: title, url, alt, img_file_name
+    form: title, url, alt, img_file_name
+  order_by: 
+  relationships: 
+  filters: 
+  search: title
+  application: jesoloimpresa
+

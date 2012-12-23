@@ -1,0 +1,104 @@
+<!-- h1>Sito#index - Scopri Jesolo</h1 -->
+
+
+<div id="s3slider">
+	<ul id="s3sliderContent">
+		<% @site_news.each do |news| %>
+			<li class="s3sliderImage">
+				<%= image_tag(news.big_image.url, :alt => news.big_image_alt, :title => news.title, :width => "635px", :height => "405px") %>
+         	 	<span><%= link_to news.title, news %></span>
+			</li>
+		<% end %>
+		
+		<div class="clear s3sliderImage"></div>
+		
+	</ul>	
+</div>
+
+<div class="meteo_widget">
+	<div id="cont_c5cae04b63ec8be01a2a120861934dca">
+ <h2 id="h_c5cae04b63ec8be01a2a120861934dca"><a href="http://www.ilmeteo.net/" title="Meteo">Meteo</a></h2>
+ <a id="a_c5cae04b63ec8be01a2a120861934dca" href="http://www.ilmeteo.net/meteo_Jesolo-Europa-Italia-Venezia--1-30069.html" target="_blank" title="Meteo Jesolo" style="color:#3366ff;font-family:1;font-size:14px;"></a><script type="text/javascript" src="http://www.ilmeteo.net/wid_loader/c5cae04b63ec8be01a2a120861934dca"></script>
+</div>
+</div> <!-- /meteo_widget -->
+
+<div class="interest-based-ad">
+	<% @banner.each do |banner| %> 
+	<%= link_to image_tag(banner.img.url, :alt => banner.alt, :title => banner.title, :width => "300px", :height => "245px"), "http://"+banner.url, :target => "_blank" %>
+	<% end %>				
+</div> <!-- /interest-based-ad -->
+
+<div class="row first clearfix">
+	<div id="eat_div" class="fadeThis">
+		<div class="fadeimg">
+			<div class="post_image" style="display: block;">
+				<img src="/images/eat.jpg">
+			</div>
+		</div>
+		
+		<div class="post_body hide" style="display: none;">
+			<h2>Assapora</h2>
+			<ul>
+				<%= render(:partial => "cat_type" , :collection => @cat_type_eat, :limit => '6') %>
+				<li style="width:100%;clear:both;display:block;"><%= link_to 'Tutte le Categorie >>', :controller => :categories, :action => :index %></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="play_div" class="fadeThis">
+		<div class="fadeimg">
+			<div class="post_image" style="display: block;">
+				<img src="/images/play.jpg">
+			</div>
+		</div>
+		
+		<div class="post_body hide" style="display: none;">
+			<h2>Divertiti</h2>
+			<ul>
+				<%= render(:partial => "cat_type" , :collection => @cat_type_play, :limit => '6') %>
+				<li style="width:100%;clear:both;display:block;"><%= link_to 'Tutte le Categorie >>',  :controller => :categories, :action => :index %></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="live_div" class="fadeThis no-r">
+		<div class="fadeimg">
+			<div class="post_image" style="display: block;">
+				<img src="/images/live.jpg">
+			</div>
+		</div>
+		
+		<div class="post_body hide" style="display: none;">
+			<h2>Conosci</h2>
+			<ul>
+				<%= render(:partial => "cat_type" , :collection => @cat_type_live, :limit => '6') %>
+				<li style="width:100%;clear:both;display:block;"><%= link_to 'Tutte le Categorie >>', :controller => :categories, :action => :index %></li>
+			</ul>
+		</div>
+	</div>
+</div> <!-- / row first clearfix -->
+
+<div class="row first clearfix">
+<!-- iframe name="absframe" src ="http://abs.forcolatravel.com/affiliate/index.php?parid=22&lg=it&int_type=3&pid=1&calendar_type=1" frameborder="0" scrolling="no" allowtransparency="true" width="470px" height="430px"></iframe-->
+<iframe name="absframe" style="margin-right:15px;" align="left" src="http://abs.forcolatravel.com/affiliate/index.php?parid=22&lg=it&int_type=1&pid=1&calendar_type=1" frameborder="0" scrolling="no" allowtransparency="true" width="470px" height="230px"></iframe>
+
+<div id="news_div" class="fadeThis">
+		<div class="fadeimg">
+			<div class="post_image" style="display: block;">
+				<img src="/images/news.jpg">
+			</div>
+		</div>
+		
+		<div class="post_body hide" style="display: none;">
+			<h2>Eventi &amp; News</h2>
+			<ul>
+				<%= render(:partial => "news" , :collection => @site_news_fade) %>
+				<li style="width:100%;clear:both;display:block;"><%= link_to 'Tutti gli Eventi >>', :controller => :news, :action => :index %></li>
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+
+

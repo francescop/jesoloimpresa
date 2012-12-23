@@ -1,0 +1,53 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  announcementcategory_id: 1
+  comune: MyString
+  indirizzo: MyString
+  titolo: MyString
+  offrocerco: MyString
+  descrizione: MyText
+  email: MyString
+  nome: MyString
+  telefono: MyString
+  sitoweb: MyString
+  attivo: false
+  permalink: MyString
+  image1_file_name: MyString
+  image1_content_type: MyString
+  image1_file_size: 1
+  image1_updated_at: 2011-03-27 12:15:00
+  image2_file_name: MyString
+  image2_content_type: MyString
+  image2_file_size: 1
+  image2_updated_at: 2011-03-27 12:15:00
+  image3_file_name: MyString
+  image3_content_type: MyString
+  image3_file_size: 1
+  image3_updated_at: 2011-03-27 12:15:00
+
+two:
+  announcementcategory_id: 1
+  comune: MyString
+  indirizzo: MyString
+  titolo: MyString
+  offrocerco: MyString
+  descrizione: MyText
+  email: MyString
+  nome: MyString
+  telefono: MyString
+  sitoweb: MyString
+  attivo: false
+  permalink: MyString
+  image1_file_name: MyString
+  image1_content_type: MyString
+  image1_file_size: 1
+  image1_updated_at: 2011-03-27 12:15:00
+  image2_file_name: MyString
+  image2_content_type: MyString
+  image2_file_size: 1
+  image2_updated_at: 2011-03-27 12:15:00
+  image3_file_name: MyString
+  image3_content_type: MyString
+  image3_file_size: 1
+  image3_updated_at: 2011-03-27 12:15:00

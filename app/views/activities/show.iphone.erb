@@ -1,0 +1,67 @@
+<div class="panel" title="<%= @activity.name -%>" selected="true">
+    <h1><%= @activity.name %></h1>
+
+	<h3>Informazioni</h3>
+			<span class="normal indirizzo">Indirizzo</span> <span class="normal left8"><%= @activity.address %></span><br />
+			<span class="normal telefono">Telefono</span>  <span class="normal left8"><%= @activity.phone %></span><br />
+			<% if @activity.website? %>
+				<span class="normal sito_web">Sito Web</span> <span class="normal left8"><%= link_to @activity.website, "http://"+@activity.website, :target => "_blank" %></span><br />
+			<% end %>
+
+				<h3>Descrizione</h3>
+				
+
+				<% if @activity.description? %>
+					<p>
+						<%= @activity.description %>
+					</p>
+					
+				<% else %>
+				
+					<p>
+						Descrizione non disponibile.
+					</p>
+		
+				<% end %>
+					
+					<p>
+						<%= @activity.complete_description %>
+					</p>
+		
+	<h2>Immagini</h2>
+	
+	<% if @activity.img1? %>
+		<%= image_tag(@activity.img1.url, :alt => @activity.altimage1, :title => @activity.name, :width => '100px', :height => '64px') %>
+	<% else %>
+		<p>
+			Immagini non disponibili.
+		</p>
+	<% end %>
+	
+	<% if @activity.img2? %>
+		<%= image_tag(@activity.img2.url, :alt => @activity.altimage2, :title => @activity.name, :width => '100px', :height => '64px') %>
+	<% end %>
+	
+	<% if @activity.img3? %>
+		<%= image_tag(@activity.img3.url, :alt => @activity.altimage3, :title => @activity.name, :width => '100px', :height => '64px') %>
+	<% end %>
+	
+	<% if @activity.img4? %>
+		<%= image_tag(@activity.img4.url, :alt => @activity.altimage4, :title => @activity.name, :width => '100px', :height => '64px') %>
+	<% end %>
+	
+	<% if @activity.img5? %>
+		<%= image_tag(@activity.img5.url, :alt => @activity.altimage5, :title => @activity.name, :width => '100px', :height => '64px') %>
+	<% end %>
+	
+	<% if @activity.img6? %>
+		<%= image_tag(@activity.img6.url, :alt => @activity.altimage6, :title => @activity.name, :width => '100px', :height => '64px') %>
+	<% end %>
+						
+			
+
+</div>
+
+
+			
+			

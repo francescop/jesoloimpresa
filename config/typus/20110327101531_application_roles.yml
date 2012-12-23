@@ -1,0 +1,7 @@
+# Typus Roles Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+admin:
+  Announcement: create, read, update, delete
+  Announcementcategory: create, read, update, delete

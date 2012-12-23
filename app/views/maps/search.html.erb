@@ -1,0 +1,23 @@
+
+	<h1>Cerca Aziende nella mappa</h1>
+
+<%= render 'search' %>
+
+
+
+<div id="search-results" style="width:383px;">
+	
+	
+	
+	<div id="search-content">
+		
+		
+		<div id="results" class="limitwidth">
+		
+				<%= render(:partial => "activity" , :object => @activity) %>			
+			
+		</div> <!-- /results -->
+	
+	</div> <!-- /search-content -->
+	
+</div> <!-- /search-results -->

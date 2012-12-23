@@ -1,0 +1,29 @@
+<div style="border: 1px solid #DFDFDF;padding:10px;">
+	<h1>Cerca Aziende nella mappa</h1>	
+	<%= render 'search' %>
+</div>
+
+	<div id="search-results" style="width:383px;">
+		
+		
+		
+		<div id="search-content">
+			
+			
+			<div id="results" class="limitwidth">
+			
+				<% if !@activities.nil? && @activities[0]  %>
+		
+					<%= render(:partial => "activities" , :collection => @activities) %>			
+				
+				<% else %>
+					<% if !params[:search].nil? %>
+						<p>NON CI SONO AZIENDE CON QUEL NOMINATIVO</p>
+					<% end %>	
+				<% end %>
+				
+			</div> <!-- /results -->
+		
+		</div> <!-- /search-content -->
+		
+	</div> <!-- /search-results -->

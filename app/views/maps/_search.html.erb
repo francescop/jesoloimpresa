@@ -1,0 +1,8 @@
+<!-- %= select("activity", "id", Activity.all.collect {|a| [a.name, a.id] })% -->
+<%= form_for @searched_activities, :url => maps_path, :html => {:method => :get} do |f| %>
+    <%= f.text_field :name_contains, :id => "search-terms-map" %>
+	<%= f.submit "Cerca Per Nome", :name => nil, :id => "search-submit-map" %>
+<% end %>
+
+
+

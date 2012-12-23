@@ -1,0 +1,13 @@
+<ul>
+	<% @all_news.each do |news| %>
+		<li>
+			<%= image_tag(news.big_image.url, :alt => news.big_image_alt, :title => news.title, :width => "85px", :height => "100px", :style => "float:left;") %>
+			<div style="float: right;width: 229px;padding: 7px 7px 0;">
+				<%= link_to news.title + " >>", news %>
+				<p>
+					<%= news.description.truncate(90)%>
+				</p>
+			</div>
+		</li>
+	<% end %>
+</ul>

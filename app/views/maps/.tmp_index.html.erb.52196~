@@ -1,0 +1,16 @@
+<h1>Maps#index</h1>
+<p>Find me in app/views/maps/index.html.erb</p>
+
+<%= collection_select "var", "activities", @categories, :id, :name, :prompt => 'Seleziona Categoria' %>
+<%= submit_tag 'Cerca' ,:action => 'cerca' %>
+
+<ul>
+	<% @categories.each do |category| %>
+		
+		<li>	
+			<%= category.name %>
+		</li>
+		
+	<% end %>
+	
+</ul>
